@@ -77,7 +77,7 @@ function App() {
 
     <div className='bg-green-200 min-h-screen flex items-center justify-center'>
         
-        <div className='bg-white  px-6 py-3  rounded-2xl mx-auto'>
+        <div className='bg-white  px-6 py-3  rounded-2xl my-4'>
             <h1 className='text-gray-800 font-bold  text-2xl p-2 pl-0'>Contact Us</h1>
             
             <form onSubmit={handleSubmit} action="/submit"  method="get">
@@ -91,8 +91,9 @@ function App() {
                         type="text" 
                         onChange={handleChange} 
                         name='firstName' 
-                        className='w-full outline rounded  outline-gray-500 h-9 hover:outline-green-800 focus:outline-green-800 hover:outline-2 focus:outline-2'
+                        className={` w-full outline rounded ${errors.firstName  ? 'outline-red-500' : 'outline-gray-500'} h-9 hover:outline-green-800 focus:outline-green-800 hover:outline-2 focus:outline-2`}
                         value={formData.firstName}
+
                         />
                          {errors.firstName && <p className="text-red-500">{errors.firstName}</p>}
                     </div>
@@ -103,7 +104,7 @@ function App() {
                         type="text" 
                         onChange={handleChange} 
                         name='secondName'
-                        className='w-full outline rounded  outline-gray-500 h-9 hover:outline-green-800 focus:outline-green-800 hover:outline-2 focus:outline-2'
+                        className={`w-full outline rounded  ${errors.secondName ?  'outline-red-500' : 'outline-gray-500'} h-9 hover:outline-green-800 focus:outline-green-800 hover:outline-2 focus:outline-2`}
                         value={formData.secondName}
                         />
                         {errors.secondName && <p className="text-red-500">{errors.secondName}</p>}
@@ -115,7 +116,7 @@ function App() {
                     <input   
                     type="email"
                     onChange={handleChange} 
-                    className='w-full outline rounded  outline-gray-500 h-9 hover:outline-green-800 focus:outline-green-800 hover:outline-2 focus:outline-2'
+                    className={`w-full outline rounded   ${errors.email ?  'outline-red-500' : 'outline-gray-500'}  h-9 hover:outline-green-800 focus:outline-green-800 hover:outline-2 focus:outline-2`}
                     value={formData.email}
                     name='email'
                     />
@@ -130,7 +131,7 @@ function App() {
 
                     <h4 htmlFor="" className='text-gray-600 p-1 pl-0'>Query Type <span className='text-green-600 p-1'>*</span></h4>
                     <div className='md:flex md:flex-row'>
-                        <div className='outline outline-gray-500 flex items-center justify-center h-9 mb-2 rounded focus:bg-green-200 hover:bg-green-200 hover:outline-2 focus:outline-2 md:w-1/2  m-1'>
+                        <div className={`outline ${errors.queryType ?  'outline-red-500' : 'outline-gray-500'} flex items-center justify-center h-9 mb-2 rounded focus:bg-green-200 hover:bg-green-200 hover:outline-2 focus:outline-2 md:w-1/2  m-1`}>
                             <input 
                             onChange={handleChange} 
                             type="radio"  
@@ -140,7 +141,7 @@ function App() {
                             <label htmlFor="support">Support Request</label>
                         </div>
                         
-                        <div  className='outline outline-gray-500 flex items-center justify-center h-9 rounded focus:bg-green-200 hover:bg-green-200 hover:outline-2 focus:outline-2  md:w-1/2 m-1'>
+                        <div  className={`outline ${errors.queryType ?  'outline-red-500' : 'outline-gray-500'} flex items-center justify-center h-9 mb-2 rounded focus:bg-green-200 hover:bg-green-200 hover:outline-2 focus:outline-2 md:w-1/2  m-1`}>
                             <input 
                             type="radio" 
                             className='m-2' 
@@ -158,10 +159,10 @@ function App() {
                 {/* Msg area */}
 
                 <div className='flex  flex-col py-2 '>
-                    <label htmlFor="" className='text-gray-600 p-1 pl-0'>Message <span className='text-green-700 p-1'>*</span></label>
+                    <label htmlFor="" className=' p-1 pl-0'>Message <span className='text-green-700 p-1'>*</span></label>
                     <textarea name="message"
                     onChange={handleChange} 
-                    className='w-full outline rounded  outline-gray-500 h-64 hover:outline-green-800 focus:outline-green-800 hover:outline-2 focus:outline-2  '
+                    className={`w-full outline rounded ${errors.message ? 'outline-red-500' : 'outline-gray-500'}  h-40 hover:outline-green-800 focus:outline-green-800 hover:outline-2 focus:outline-2 `}
                     ></textarea>
                     
                     {errors.message && <p className='text-red-500' > { errors.message}</p>}
